@@ -2,6 +2,10 @@ express = require 'express'
 sanitizer = require 'sanitizer'
 ops = require './lib/operations'
 path = require 'path'
+bodyParser = require 'body-parser'
+methodOverride = require 'method-override'
+serveFavicon = require 'serve-favicon'
+serveStatic = require 'serve-static'
 
 template = (message, image) -> '
 <html>
@@ -25,7 +29,7 @@ template = (message, image) -> '
 	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 	  })(window,document,"script","//www.google-analytics.com/analytics.js","ga");
 
-	  ga("create", "UA-45781322-1", "khanaas.com");
+	  ga("create", "UA-62146225-1", "auto");
 	  ga("send", "pageview");
 
 	</script>
@@ -45,8 +49,11 @@ dooutput = (res, message, image) ->
       res.send template(message,image)
 
 app = express()
-app.use(express.bodyParser())
-app.use(express.methodOverride())
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({
+  extended: true
+}))
+app.use(methodOverride())
 
 app.use (req, res, next) ->
   res.header 'Access-Control-Allow-Origin', '*'
@@ -54,11 +61,8 @@ app.use (req, res, next) ->
   res.header 'Access-Control-Allow-Headers', 'Content-Type'
   next()
 
-app.use(app.router)
-app.use(express.static('./public'))
-app.use(express.favicon(path.join(__dirname, 'public/images/favicon.ico'))); 
-app.use (req, res) ->
-  res.sendfile("./public/index.html")
+app.use(serveStatic('./public'))
+app.use(serveFavicon(path.join(__dirname, 'public/favicon.ico')));
 
 app.options "*", (req, res) ->
   res.header 'Access-Control-Allow-Origin', '*'

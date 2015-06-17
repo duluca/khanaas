@@ -1,19 +1,22 @@
 {
-  "name": "foaas",
-  "version": "0.0.1",
-  "description": "Fuck Off As A Service",
+  "name": "khanaas",
+  "version": "1.0.0",
+  "description": "Khan As A Service",
   "main": "server.coffee",
   "scripts": {
-    "start": "./node_modules/.bin/coffee server.coffee",
+    "start": "node server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": "",
   "author": "",
   "license": "BSD",
-
   "dependencies": {
-    "coffee-script" : "latest",
-    "express" : "latest",
-    "sanitizer": "latest"
+    "body-parser": "^1.12.3",
+    "coffee-script": "^1.9.2",
+    "express": "^4.12.3",
+    "method-override": "^2.3.2",
+    "sanitizer": "^0.1.2",
+    "serve-favicon": "^2.2.0",
+    "serve-static": "^1.9.2"
   }
 }
