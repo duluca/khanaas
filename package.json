@@ -1,18 +1,20 @@
 {
   "name": "khanaas",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Khan As A Service",
-  "main": "server.coffee",
+  "main": "server",
   "scripts": {
     "start": "node server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": "",
-  "author": "",
-  "license": "BSD",
+  "engines": {
+    "node": "6.11.1"
+  },
+  "repository": "https://github.com/duluca/khanaas/",
+  "author": "Doguhan Uluca <duluca@gmail.com>",
+  "license": "Apache-2.0",
   "dependencies": {
     "body-parser": "^1.12.3",
-    "coffee-script": "^1.9.2",
     "express": "^4.12.3",
     "method-override": "^2.3.2",
     "sanitizer": "^0.1.2",
