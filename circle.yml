@@ -1,0 +1,14 @@
+machine:
+  node:
+    version: 6.11.1
+dependencies:
+  override:
+    - npm install
+test:
+  override:
+    - echo 'none'
+deployment:
+  staging:
+    branch: master
+    heroku:
+      appname: khanaas2
